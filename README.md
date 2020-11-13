@@ -10,11 +10,13 @@ A simple example of creating Dropwizard Application. This project is tested with
 
 
 ## Build
-Use mvn package to build the module into jar file
+- Use mvn package to build the module into jar file
 > mvn clean package
-> Create configuration file ( see config example in config.yml in the project repo)
-> Run the resulting jar:
-java -jar dropwizard-example.jar server <config_file_path>
+
+- Create configuration file ( see config example in config.yml in the project repo)
+- Run the resulting jar:
+
+>java -jar dropwizard-example.jar server <config_file_path>
 
 
 ## Configuration
