@@ -1,0 +1,21 @@
+defaultName: Stranger
+JwksUrl: https://demo.identityserver.io/.well-known/openid-configuration/jwks
+
+# Swagger-specific options.
+swagger:
+
+  resourcePackage: com.rizky.dropwizard.example.resources
+  title: Hello World API
+  schemes: [http,https]
+  version: 1.0
+  description: Hello World
+  contact: Rizky Satrio
+  contactEmail: 
+  contactUrl: 
+  license: Apache 2.0
+  licenseUrl: https://www.apache.org/licenses/LICENSE-2.0       
+  
+logging:
+  level: INFO
+  loggers:
+    com.rizky: DEBUG
