@@ -4,7 +4,7 @@ A simple example of creating Dropwizard Application. This project is tested with
 
 ## Features
 - REST Endpoint
-- Authentication and Role Based Authorization with JWT
+- Authentication and Role Based Authorization with JWT. In this example we use identityserver4 demo server. It can be change to any oauth2/jwt server.
 - Swagger page to test the API
 - Unit Test
 
@@ -16,7 +16,7 @@ A simple example of creating Dropwizard Application. This project is tested with
 - Create configuration file ( see config example in config.yml in the project repo)
 - Run the resulting jar:
 
->java -jar dropwizard-example.jar server <config_file_path>
+> java -jar dropwizard-example.jar server <config_file_path>
 
 
 ## Configuration

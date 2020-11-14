@@ -2,8 +2,10 @@ package com.rizky.dropwizard.example.resources;
 
 
 
+import io.dropwizard.auth.Auth;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import io.swagger.annotations.Authorization;
@@ -27,6 +29,7 @@ import javax.ws.rs.core.Response;
 import org.slf4j.LoggerFactory;
 
 import com.rizky.dropwizard.example.api.StdResponseV1;
+import com.rizky.dropwizard.example.auth.ExampleClaims;
 
 
 @Api("API for Hello World")
@@ -60,10 +63,12 @@ public class HelloWorldResource {
             @ApiResponse (code = 200, response=StdResponseV1.class,message = "{statusOk:true,message:Sukses,data:[data1:10,etc]}"),
     })
     @RolesAllowed("m2m")
-    public StdResponseV1 sayHello(@PathParam("name") Optional<String> name) throws Exception {
+    public StdResponseV1 sayHello( @ApiParam(required=true) @PathParam("name") Optional<String> name, 
+            @ApiParam(required=false,hidden=true,allowEmptyValue=true) @Auth ExampleClaims claim1) throws Exception {
+       
         StdResponseV1 hello1=new StdResponseV1();
         try {
-            
+           
             final String value = name.orElse(defaultName);
 
             hello1.setStatusOk(true);

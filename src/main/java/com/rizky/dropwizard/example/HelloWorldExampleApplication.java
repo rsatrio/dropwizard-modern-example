@@ -39,6 +39,7 @@ public class HelloWorldExampleApplication extends Application<HelloWorldExampleC
         final HelloWorldResource res1=new HelloWorldResource(configuration.getDefaultName());
 
       //Register Authentication&Authorize
+        
         environment.jersey().register(new AuthDynamicFeature(new OAuthCredentialAuthFilter.Builder<ExampleClaims>()
                 .setAuthenticator(new ExampleAuthenticatorJWT(configuration))
                 .setAuthorizer(new ExampleApiAuthorizer())
