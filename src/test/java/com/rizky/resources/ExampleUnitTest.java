@@ -8,6 +8,7 @@ import io.dropwizard.testing.junit.ResourceTestRule;
 
 import java.util.Optional;
 
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.Response;
 
 import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
@@ -23,6 +24,7 @@ import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rizky.dropwizard.example.HelloWorldExampleConfiguration;
+import com.rizky.dropwizard.example.api.ExampleRequest;
 import com.rizky.dropwizard.example.api.StdResponseV1;
 import com.rizky.dropwizard.example.auth.ExampleApiAuthorizer;
 import com.rizky.dropwizard.example.auth.ExampleAuthenticatorJWT;
@@ -59,7 +61,7 @@ public class ExampleUnitTest {
 
 
     @Test
-    public void B2bTest1()  throws Exception{
+    public void ExampeTest1()  throws Exception{
 
 
         ExampleClaims claim=new ExampleClaims();
@@ -93,5 +95,43 @@ public class ExampleUnitTest {
 
     }
 
+    @Test
+    public void ExampeTest2()  throws Exception{
+
+
+        ExampleClaims claim=new ExampleClaims();
+        claim.setEmail("test@test.com");
+        claim.setRole("m2m");
+        Optional<ExampleClaims> claim1=Optional.of(claim);
+
+        //Mock authentication
+        Mockito.when(auth1.authenticate(Mockito.any())).thenReturn(claim1);
+        Mockito.when(authorize1.authorize(Mockito.any(), Mockito.any())).thenReturn(true);
+        Mockito.when(authorize1.authorize(Mockito.any(), Mockito.any(),Mockito.any())).thenReturn(true);
+
+        ExampleRequest req=new ExampleRequest();
+        req.setName("John Doe");
+        StdResponseV1 respDecoded=RULE.target("/v1/hello/name/check")
+                .request()
+                .header("Authorization", "Bearer testing")
+                .post(Entity.json(req))
+                .readEntity(StdResponseV1.class);
+
+
+        assertThat(respDecoded.isStatusOk(), CoreMatchers.is(true));
+        assertThat(respDecoded.getMessage().contains("John"), CoreMatchers.is(true));
+
+
+        req.setName("Bob");
+        Response resp=RULE.target("/v1/hello/name/check")
+                .request()
+                .header("Authorization", "Bearer testing")
+                .post(Entity.json(req));
+
+
+        assertThat(resp.getStatus(), CoreMatchers.is(422));
+        assertThat(resp.readEntity(String.class).contains("John"),CoreMatchers.is(true));
+
+    }
 
 }

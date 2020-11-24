@@ -7,6 +7,7 @@ A simple example of creating Dropwizard Application. This project is tested with
 - Authentication and Role Based Authorization with JWT. In this example we use identityserver4 demo server. It can be change to any oauth2/jwt server.
 - Swagger page to test the API
 - Unit Test
+- Validation of POJO request with annotation
 
 
 ## Build
