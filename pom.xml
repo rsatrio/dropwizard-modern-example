@@ -148,14 +148,14 @@
   </pluginRepository>
  </pluginRepositories>
  <build>
-  <resources>
-   <resource>
-    <directory>${project.basedir}</directory>
-    <includes>
-     <include>lib/*.jar</include>
-    </includes>
-   </resource>
-  </resources>
+<!--   <resources> -->
+<!--    <resource> -->
+<!--     <directory>${project.basedir}</directory> -->
+<!--     <includes> -->
+<!--      <include>lib/*.jar</include> -->
+<!--     </includes> -->
+<!--    </resource> -->
+<!--   </resources> -->
   <finalName>dropwizard-example</finalName>
   <plugins>
    <plugin>

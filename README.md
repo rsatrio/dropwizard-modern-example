@@ -8,6 +8,7 @@ A simple example of creating Dropwizard Application. This project is tested with
 - Swagger page to test the API
 - Unit Test
 - Validation of POJO request with annotation
+- Custom Appender for logging
 
 
 ## Build

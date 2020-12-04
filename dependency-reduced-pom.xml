@@ -6,14 +6,6 @@
   <name>Dropwizard-Example</name>
   <version>1.0RC1</version>
   <build>
-    <resources>
-      <resource>
-        <directory>${project.basedir}</directory>
-        <includes>
-          <include>lib/*.jar</include>
-        </includes>
-      </resource>
-    </resources>
     <finalName>dropwizard-example</finalName>
     <plugins>
       <plugin>
@@ -107,20 +99,6 @@
       <artifactId>mockito-core</artifactId>
       <version>3.5.7</version>
       <scope>test</scope>
-      <exclusions>
-        <exclusion>
-          <artifactId>byte-buddy</artifactId>
-          <groupId>net.bytebuddy</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>byte-buddy-agent</artifactId>
-          <groupId>net.bytebuddy</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>objenesis</artifactId>
-          <groupId>org.objenesis</groupId>
-        </exclusion>
-      </exclusions>
       <optional>true</optional>
     </dependency>
     <dependency>
@@ -142,16 +120,6 @@
       <artifactId>jersey-test-framework-provider-grizzly2</artifactId>
       <version>2.31</version>
       <scope>test</scope>
-      <exclusions>
-        <exclusion>
-          <artifactId>jersey-container-grizzly2-http</artifactId>
-          <groupId>org.glassfish.jersey.containers</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>jersey-container-grizzly2-servlet</artifactId>
-          <groupId>org.glassfish.jersey.containers</groupId>
-        </exclusion>
-      </exclusions>
       <optional>true</optional>
     </dependency>
     <dependency>
@@ -159,12 +127,6 @@
       <artifactId>jersey-test-framework-provider-jetty</artifactId>
       <version>2.31</version>
       <scope>test</scope>
-      <exclusions>
-        <exclusion>
-          <artifactId>jersey-container-jetty-http</artifactId>
-          <groupId>org.glassfish.jersey.containers</groupId>
-        </exclusion>
-      </exclusions>
       <optional>true</optional>
     </dependency>
     <dependency>

@@ -17,5 +17,8 @@ swagger:
   
 logging:
   level: INFO
+  appenders:
+        - type: custom_console
+          custom_variable: testing123
   loggers:
     com.rizky: DEBUG
