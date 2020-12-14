@@ -9,6 +9,7 @@ A simple example of creating Dropwizard Application. This project is tested with
 - Unit Test
 - Validation of POJO request with annotation
 - Custom Appender for logging
+- Accesing HttpServletRequest variable
 
 
 ## Build
