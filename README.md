@@ -10,19 +10,35 @@ A simple example of creating Dropwizard Application. This project is tested with
 - Validation of POJO request with annotation
 - Custom Appender for logging
 - Accesing HttpServletRequest variable
+- Dockerized
 
 
 ## Build
 - Use mvn package to build the module into jar file
-> mvn clean package
-
+```shell
+mvn clean package
+```
 - Create configuration file ( see config example in config.yml in the project repo)
 - Run the resulting jar:
+```shell
+java -jar dropwizard-example.jar server <config_file_path>
+```
+## Docker
+- Build the package as above in [Build]
+- Go to the root directory of the project and run:
+```shell
+docker build -t dropwizard-sample .
+```
+- And then run the docker image:
+```shell
+docker run -p 8080:8080 dropwizard-sample
+```
+- Go to the browser and try to open swagger in http://localhost:8080/swagger
 
-> java -jar dropwizard-example.jar server <config_file_path>
-
+  
 
 ## Configuration
+
 - Please check the config.yml example in the repo
 - The configuration example is based on use-case of application authenticating using identityserver4 demo url.
 
