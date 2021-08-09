@@ -34,6 +34,7 @@ import javax.ws.rs.core.Response;
 import org.slf4j.LoggerFactory;
 
 import com.rizky.dropwizard.example.api.ExampleRequest;
+import com.rizky.dropwizard.example.api.LoginRequest;
 import com.rizky.dropwizard.example.api.StdResponseV1;
 import com.rizky.dropwizard.example.auth.ExampleClaims;
 
@@ -120,6 +121,35 @@ public class HelloWorldResource {
         StdResponseV1 resp=new StdResponseV1();
         resp.setStatusOk(true);
         resp.setMessage("Parameter correct "+req.getName());
+
+        return resp;
+    }
+
+    @GET
+    @Path("dropwizard")
+    public StdResponseV1 fromDropwizard() {
+
+        StdResponseV1 resp=new StdResponseV1();
+        resp.setStatusOk(true);
+        resp.setMessage("Hello from Dropwizard");
+
+        return resp;
+    }
+
+    @POST
+    @Path("login")
+    public StdResponseV1 doLogin(LoginRequest req) {
+
+        StdResponseV1 resp=new StdResponseV1();
+       
+        if(req.getUsername().equalsIgnoreCase("admin") && req.getPassword().equals("admin")) {
+            resp.setStatusOk(true);
+            resp.setMessage("Login Ok");
+        }
+        else    {
+            resp.setStatusOk(false);
+            resp.setMessage("Login Not Ok");
+        }
 
         return resp;
     }

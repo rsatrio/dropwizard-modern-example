@@ -48,3 +48,6 @@ test-output/
 
 #linux te files
 *~
+
+src/adminlte-3-angular/node_modules
+src/main/resources/adminlte

@@ -1,6 +1,6 @@
-# Dropwizard Example
+# Dropwizard and Angular Apps Example
 
-A simple example of creating Dropwizard Application. This project is tested with dropwizard 2.x and Java 8.
+A simple example of creating Dropwizard Application as Backend and Angular as Frontend. This project is tested with dropwizard 2.x, Java 8, and Angular 12.
 
 ## Features
 - REST Endpoint
@@ -11,9 +11,17 @@ A simple example of creating Dropwizard Application. This project is tested with
 - Custom Appender for logging
 - Accesing HttpServletRequest variable
 - Dockerized
-
+- Angular 12  AdminLTE Front End (slightly modified from https://github.com/erdkse/adminlte-3-angular) 
 
 ## Build
+
+- Install nodejs 
+- Run this to install required NPM and build angular AdminLTE:
+```shell
+cd src/adminlte-3-angular
+npm install
+ng build --base-href=/angular/
+```
 - Use mvn package to build the module into jar file
 ```shell
 mvn clean package
@@ -23,6 +31,7 @@ mvn clean package
 ```shell
 java -jar dropwizard-example.jar server <config_file_path>
 ```
+
 ## Docker
 - Build the package as above in [Build]
 - Go to the root directory of the project and run:
@@ -34,9 +43,8 @@ docker build -t dropwizard-sample .
 docker run -p 8080:8080 dropwizard-sample
 ```
 - Go to the browser and try to open swagger in http://localhost:8080/swagger
-
+- Go to the browser and try to open the AdminLTE Angular app in http://localhost:8080/angular/
   
-
 ## Configuration
 
 - Please check the config.yml example in the repo

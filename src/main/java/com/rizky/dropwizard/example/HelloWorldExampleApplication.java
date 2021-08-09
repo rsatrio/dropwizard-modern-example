@@ -3,6 +3,7 @@ package com.rizky.dropwizard.example;
 //import org.apache.http.client.HttpClient;
 
 import io.dropwizard.Application;
+import io.dropwizard.assets.AssetsBundle;
 import io.dropwizard.auth.AuthDynamicFeature;
 import io.dropwizard.auth.AuthValueFactoryProvider;
 import io.dropwizard.auth.oauth.OAuthCredentialAuthFilter;
@@ -11,7 +12,10 @@ import io.dropwizard.setup.Environment;
 import io.federecio.dropwizard.swagger.SwaggerBundle;
 import io.federecio.dropwizard.swagger.SwaggerBundleConfiguration;
 
+import javax.servlet.FilterRegistration;
+
 import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
+import org.tuckey.web.filters.urlrewrite.UrlRewriteFilter;
 
 import com.rizky.dropwizard.example.auth.ExampleApiAuthorizer;
 import com.rizky.dropwizard.example.auth.ExampleAuthenticatorJWT;
@@ -37,6 +41,12 @@ public class HelloWorldExampleApplication extends Application<HelloWorldExampleC
             final Environment environment) {
 
         final HelloWorldResource res1=new HelloWorldResource(configuration.getDefaultName());
+        
+        FilterRegistration.Dynamic registration = environment.servlets()
+                .addFilter("UrlRewriteFilter", new UrlRewriteFilter());
+        
+        registration.addMappingForUrlPatterns(null, true, "/*");
+        registration.setInitParameter("confPath", "urlrewrite.xml");
 
       //Register Authentication&Authorize
         
@@ -58,7 +68,9 @@ public class HelloWorldExampleApplication extends Application<HelloWorldExampleC
     @Override
     public void initialize(final Bootstrap<HelloWorldExampleConfiguration> bootstrap) {
 
-
+        bootstrap.addBundle(new AssetsBundle("/adminlte/","/angular","index.html"));
+   
+        
         bootstrap.addBundle(new SwaggerBundle<HelloWorldExampleConfiguration>() {
             @Override
             protected SwaggerBundleConfiguration getSwaggerBundleConfiguration(HelloWorldExampleConfiguration configuration) {
