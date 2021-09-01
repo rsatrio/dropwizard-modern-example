@@ -53,7 +53,7 @@ public class HelloWorldExampleApplication extends Application<HelloWorldExampleC
         environment.jersey().register(new AuthDynamicFeature(new OAuthCredentialAuthFilter.Builder<ExampleClaims>()
                 .setAuthenticator(new ExampleAuthenticatorJWT(configuration))
                 .setAuthorizer(new ExampleApiAuthorizer())
-//                .setUnauthorizedHandler(new Tnt401ExceptionMapper())
+//                .setUnauthorizedHandler(new Custom401ExceptionMapper())
                 .setPrefix("Bearer")
                 .buildAuthFilter()));
         environment.jersey().register(RolesAllowedDynamicFeature.class);
